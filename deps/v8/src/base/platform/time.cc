@@ -425,7 +425,7 @@ Time Time::FromTimespec(struct timespec ts) {
               ts.tv_nsec / kNanosecondsPerMicrosecond);
 }
 
-struct timespec ::v8::base::Time::ToTimespec() const {
+struct timespec Time::ToTimespec() const {
   struct timespec ts;
   if (IsNull()) {
     ts.tv_sec = 0;
@@ -442,7 +442,7 @@ struct timespec ::v8::base::Time::ToTimespec() const {
   return ts;
 }
 
-::v8::base::Time ::v8::base::Time::FromTimeval(struct timeval tv) {
+Time Time::FromTimeval(struct timeval tv) {
   DCHECK_GE(tv.tv_usec, 0);
   DCHECK(tv.tv_usec < static_cast<suseconds_t>(kMicrosecondsPerSecond));
   if (tv.tv_usec == 0 && tv.tv_sec == 0) {
